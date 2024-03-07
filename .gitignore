@@ -17,3 +17,5 @@
 
 *.obj
 *.ply
+
+!log_install_svs.txt

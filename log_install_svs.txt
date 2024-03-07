@@ -1,0 +1,105 @@
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test$ git clone https://github.com/intel-isl/StableViewSynthesis.git
+Cloning into 'StableViewSynthesis'...
+remote: Enumerating objects: 75, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 75 (delta 2), reused 2 (delta 2), pack-reused 66
+Unpacking objects: 100% (75/75), 43.88 MiB | 8.55 MiB/s, done.
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test$ cd StableViewSynthesis
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis$ git submodule update --init --recursive
+Submodule 'ext/preprocess/pybind11' (https://github.com/pybind/pybind11.git) registered for path 'ext/preprocess/pybind11'
+Cloning into '/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/preprocess/pybind11'...
+Submodule path 'ext/preprocess/pybind11': checked out '0e01c243c7ffae3a2e52f998bacfe82f56aa96d9'
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis$ cd ext/preprocess
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/preprocess$ cmake -DCMAKE_BUILD_TYPE=Release .
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for module 'eigen3'
+--   Found eigen3, version 3.4.0
+-- pybind11 v2.6.3 dev1
+CMake Warning (dev) at /usr/local/share/cmake-3.22/Modules/CMakeDependentOption.cmake:84 (message):
+  Policy CMP0127 is not set: cmake_dependent_option() supports full Condition
+  Syntax.  Run "cmake --help-policy CMP0127" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+Call Stack (most recent call first):
+  pybind11/CMakeLists.txt:98 (cmake_dependent_option)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found PythonInterp: /home/hj/softs/conda/envs/hdhuman/bin/python (found version "3.9.18") 
+-- Found PythonLibs: /home/hj/softs/conda/envs/hdhuman/lib/libpython3.9.so
+-- Performing Test HAS_FLTO
+-- Performing Test HAS_FLTO - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/preprocess
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/preprocess$ make
+[ 33%] Building CXX object CMakeFiles/preprocess.dir/main.cpp.o
+[ 66%] Building CXX object CMakeFiles/preprocess.dir/preprocess.cpp.o
+[100%] Linking CXX shared module preprocess.cpython-39-x86_64-linux-gnu.so
+[100%] Built target preprocess
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/preprocess$ ext/mytorch^C
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/preprocess$ cd ../mytorch
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch$ python setup.py build_ext --inplace
+generate generated/map_to_list_nn_cpu.cpp
+generate generated/map_to_list_nn_cuda.cpp
+generate generated/map_to_list_nn_kernel.cu
+generate generated/map_to_list_bl_cpu.cpp
+generate generated/map_to_list_bl_cuda.cpp
+generate generated/map_to_list_bl_kernel.cu
+generate generated/map_to_list_bl_seq_cpu.cpp
+generate generated/map_to_list_bl_seq_cuda.cpp
+generate generated/map_to_list_bl_seq_kernel.cu
+generate generated/list_to_map_cpu.cpp
+generate generated/list_to_map_cuda.cpp
+generate generated/list_to_map_kernel.cu
+generate generated/ext_cpu.cpp
+generate generated/ext_cuda.cpp
+generate generated/ext_kernel.cu
+generate generated_ext.py
+running build_ext
+/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/utils/cpp_extension.py:388: UserWarning: The detected CUDA version (11.5) has a minor version mismatch with the version that was used to compile PyTorch (11.8). Most likely this shouldn't be a problem.
+  warnings.warn(CUDA_MISMATCH_WARN.format(cuda_str_version, torch.version.cuda))
+building 'ext_cpu' extension
+creating /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build
+creating /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39
+Emitting ninja build file /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/1] c++ -MMD -MF /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_cpu.o.d -pthread -B /home/hj/softs/conda/envs/hdhuman/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/hj/softs/conda/envs/hdhuman/include -I/home/hj/softs/conda/envs/hdhuman/include -fPIC -O2 -isystem /home/hj/softs/conda/envs/hdhuman/include -fPIC -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/TH -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/THC -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/include -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/generated -I/home/hj/softs/conda/envs/hdhuman/include/python3.9 -c -c /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/ext_cpu.cpp -o /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_cpu.o -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=ext_cpu -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+creating build/lib.linux-x86_64-cpython-39
+g++ -pthread -B /home/hj/softs/conda/envs/hdhuman/compiler_compat -shared -Wl,-rpath,/home/hj/softs/conda/envs/hdhuman/lib -Wl,-rpath-link,/home/hj/softs/conda/envs/hdhuman/lib -L/home/hj/softs/conda/envs/hdhuman/lib -L/home/hj/softs/conda/envs/hdhuman/lib -Wl,-rpath,/home/hj/softs/conda/envs/hdhuman/lib -Wl,-rpath-link,/home/hj/softs/conda/envs/hdhuman/lib -L/home/hj/softs/conda/envs/hdhuman/lib /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_cpu.o -L/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/lib -lc10 -ltorch -ltorch_cpu -ltorch_python -o build/lib.linux-x86_64-cpython-39/ext_cpu.cpython-39-x86_64-linux-gnu.so
+building 'ext_cuda' extension
+Emitting ninja build file /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/build.ninja...
+Compiling objects...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_cuda.o.d -pthread -B /home/hj/softs/conda/envs/hdhuman/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/hj/softs/conda/envs/hdhuman/include -I/home/hj/softs/conda/envs/hdhuman/include -fPIC -O2 -isystem /home/hj/softs/conda/envs/hdhuman/include -fPIC -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/TH -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/THC -I/usr/local/cuda-11.5/include -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/include -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/generated -I/home/hj/softs/conda/envs/hdhuman/include/python3.9 -c -c /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/ext_cuda.cpp -o /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_cuda.o -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=ext_cuda -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+[2/2] /usr/local/cuda-11.5/bin/nvcc  -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/TH -I/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/THC -I/usr/local/cuda-11.5/include -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/include -I/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/generated -I/home/hj/softs/conda/envs/hdhuman/include/python3.9 -c -c /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/ext_kernel.cu -o /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_kernel.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -arch=sm_86 -gencode=arch=compute_86,code=sm_86 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=ext_cuda -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/c10/util/irange.h(54): warning #186-D: pointless comparison of unsigned integer with zero
+          detected during:
+            instantiation of "__nv_bool c10::detail::integer_iterator<I, one_sided, <unnamed>>::operator==(const c10::detail::integer_iterator<I, one_sided, <unnamed>> &) const [with I=size_t, one_sided=false, <unnamed>=0]" 
+(61): here
+            instantiation of "__nv_bool c10::detail::integer_iterator<I, one_sided, <unnamed>>::operator!=(const c10::detail::integer_iterator<I, one_sided, <unnamed>> &) const [with I=size_t, one_sided=false, <unnamed>=0]" 
+/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/c10/core/TensorImpl.h(77): here
+
+/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/c10/util/irange.h(54): warning #186-D: pointless comparison of unsigned integer with zero
+          detected during:
+            instantiation of "__nv_bool c10::detail::integer_iterator<I, one_sided, <unnamed>>::operator==(const c10::detail::integer_iterator<I, one_sided, <unnamed>> &) const [with I=std::size_t, one_sided=true, <unnamed>=0]" 
+(61): here
+            instantiation of "__nv_bool c10::detail::integer_iterator<I, one_sided, <unnamed>>::operator!=(const c10::detail::integer_iterator<I, one_sided, <unnamed>> &) const [with I=std::size_t, one_sided=true, <unnamed>=0]" 
+/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/include/ATen/core/qualified_name.h(73): here
+
+g++ -pthread -B /home/hj/softs/conda/envs/hdhuman/compiler_compat -shared -Wl,-rpath,/home/hj/softs/conda/envs/hdhuman/lib -Wl,-rpath-link,/home/hj/softs/conda/envs/hdhuman/lib -L/home/hj/softs/conda/envs/hdhuman/lib -L/home/hj/softs/conda/envs/hdhuman/lib -Wl,-rpath,/home/hj/softs/conda/envs/hdhuman/lib -Wl,-rpath-link,/home/hj/softs/conda/envs/hdhuman/lib -L/home/hj/softs/conda/envs/hdhuman/lib /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_cuda.o /mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch/build/temp.linux-x86_64-cpython-39/ext_kernel.o -L/home/hj/softs/conda/envs/hdhuman/lib/python3.9/site-packages/torch/lib -L/usr/local/cuda-11.5/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o build/lib.linux-x86_64-cpython-39/ext_cuda.cpython-39-x86_64-linux-gnu.so
+copying build/lib.linux-x86_64-cpython-39/ext_cpu.cpython-39-x86_64-linux-gnu.so -> 
+copying build/lib.linux-x86_64-cpython-39/ext_cuda.cpython-39-x86_64-linux-gnu.so -> 
+(hdhuman) (base) hj@GiGa-X299:/mnt/16T/hj/Repo/hdhuman_release_test/StableViewSynthesis/ext/mytorch$ 
