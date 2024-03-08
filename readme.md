@@ -1,27 +1,26 @@
 
 # HDhuman
-Offical release of the paper “HDhuman: High-quality Human Novel-view Rendering from Sparse Views”.  
+The official release of the paper “HDhuman: High-quality Human Novel-view Rendering from Sparse Views”.  
 [IEEE access of the paper](https://ieeexplore.ieee.org/abstract/document/10168294)  
 [Home page of the project](http://cic.tju.edu.cn/faculty/likun/projects/HDhuman/index.html)
 
 <!-- vscode-markdown-toc -->
 * 1. [Dependencies overview](#Dependenciesoverview)
 * 2. [Install dependencies.](#Installdependencies.)
-	* 2.1. [Pytorch](#Pytorch)
-	* 2.2. [Taichi](#Taichi)
-	* 2.3. [Other python packages](#Otherpythonpackages)
-	* 2.4. [File struction](#Filestruction)
-	* 2.5. [Download checkpoint](#Downloadcheckpoint)
-	* 2.6. [[StableViewSynthesis](https://github.com/intel-isl/StableViewSynthesis.git)](#StableViewSynthesishttps:github.comintel-islStableViewSynthesis.git)
-* 3. [run rendering on example data with pre-trained weights.](#runrenderingonexampledatawithpre-trainedweights.)
-	* 3.1. [prepare data and checkpoints.](#preparedataandcheckpoints.)
-	* 3.2. [run rendering](#runrendering)
-* 4. [tips for editting code to run rendering with custom data.](#tipsforedittingcodetorunrenderingwithcustomdata.)
+    * 2.1. [Pytorch](#Pytorch)
+    * 2.2. [Taichi](#Taichi)
+    * 2.3. [Other python packages](#Otherpythonpackages)
+    * 2.4. [File structure](#Filestructure)
+    * 2.5. [[StableViewSynthesis](https://github.com/intel-isl/StableViewSynthesis.git)](#StableViewSynthesishttps:github.comintel-islStableViewSynthesis.git)
+* 3. [Run rendering on example data with pre-trained weights.](#Runrenderingonexampledatawithpre-trainedweights.)
+    * 3.1. [Prepare data and checkpoints.](#Preparedataandcheckpoints.)
+    * 3.2. [Run rendering](#Runrendering)
+* 4. [Tips for editing code to run rendering with custom data.](#Tipsforedittingcodetorunrenderingwithcustomdata.)
 
 <!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
+    numbering=true
+    autoSave=true
+    /vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
 
@@ -88,13 +87,13 @@ pip install taichi==0.7.26 taichi-glsl==0.0.11
 - pandas
 - trimesh
 ```shell
-#according to current offical torch-scatter torch-scatter torch-geometric website, install them via conda.
+#according to the current official torch-scatter torch-scatter torch-geometric website, install them via conda.
 conda install pytorch-scatter pytorch-sparse pyg -c pyg
 
 pip install opencv-python matplotlib scikit-image pillow torch-scatter torch-sparse torch-geometric pandas icecream trimesh[all]
 ```
 
-###  2.4. <a name='Filestruction'></a>File struction
+###  2.4. <a name='Filestructure'></a>File structure
 The final file struct needs to be like:
 ```
 ├── checkpoints
@@ -116,17 +115,14 @@ The final file struct needs to be like:
 ```
 where ```HDhuman``` is the folder of the repository.
 
-###  2.5. <a name='Downloadcheckpoint'></a>Download checkpoint
-Download the pre-trained checkpoint and place them in the ```checkpoints``` folder, following the [File struction](#Filestruction).
-[TODO: link]
 
 
-###  2.6. <a name='StableViewSynthesishttps:github.comintel-islStableViewSynthesis.git'></a>[StableViewSynthesis](https://github.com/intel-isl/StableViewSynthesis.git)
+###  2.5. <a name='StableViewSynthesishttps:github.comintel-islStableViewSynthesis.git'></a>[StableViewSynthesis](https://github.com/intel-isl/StableViewSynthesis.git)
 Clone the repository
 ```shell
 git clone https://github.com/intel-isl/StableViewSynthesis.git
 ```
-Make sure the relative path is correct refering to [File struction](#Filestruction).
+Make sure the relative path is correct referring to [File structure](#Filestructure).
 
 Initialize the submodule
 ```shell
@@ -155,9 +151,8 @@ python setup.py build_ext --inplace
 ```
 A log of installing StableViewSynthesis can be find in ```log_install_svs.txt```.
 
-# Run demo
-##  3. <a name='runrenderingonexampledatawithpre-trainedweights.'></a>run rendering on example data with pre-trained weights.
-###  3.1. <a name='preparedataandcheckpoints.'></a>prepare data and checkpoints.
+##  3. <a name='Runrenderingonexampledatawithpre-trainedweights.'></a>Run rendering on example data with pre-trained weights.
+###  3.1. <a name='Preparedataandcheckpoints.'></a>Prepare data and checkpoints.
 * Download the pre-trained weights and place them in the ```checkpoints``` folder.   
 * Download the example data and place them in the ```example_data``` folder.  
 > The download links are (either of them include full files):   
@@ -180,32 +175,32 @@ A log of installing StableViewSynthesis can be find in ```log_install_svs.txt```
 > ├── HDhuman
 > └── StableViewSynthesis
 > ``` 
-Run script to check these path.
+Run a script to check these paths.
 ```shell
 #run in the folder of 'HDhuman'
-#check path of example data and checkpoints
+#check the paths of example data and checkpoints
 python script/check_path_for_demo.py
-#with assertions in this script, should have no output.
+#with assertions in this script should have no output.
 ```
-###  3.2. <a name='runrendering'></a>run rendering
+###  3.2. <a name='Runrendering'></a>Run rendering
 ```shell
 python script/run_render_on_example_data.py
 ```
-Some config can be edit directly in ```run_render_on_example_data.py```, e.g.
+Some config can be edited directly in ```run_render_on_example_data.py```, e.g.
 ```python
 NUM_VIEW_INPUT = 6
 NUM_VIEW_OUTPUT = 180 #can be factors of 360, there are 360 pre-defined views
 ```
-The output of the render can be find in ```example_data/render_output```.
+The output of the render can be found in ```example_data/render_output```.
 
-##  4. <a name='tipsforedittingcodetorunrenderingwithcustomdata.'></a>tips for editting code to run rendering with custom data.
-refering to the projection
+##  4. <a name='Tipsforedittingcodetorunrenderingwithcustomdata.'></a>Tips for editing code to run rendering with custom data.
+referring to the projection
 prepare the following data
 * reconstructed mesh.
 * multi-view input with camera parameters
-make sure the camera paramters can pass the projection check like ```HDhuman/script/check_projection.py``` and call the function ```render_one_subject_from_path_and_write_to_folder()``` in ```HDhuman/lib/test/test_render_api.py```.
+make sure the camera parameters can pass the projection check like ```HDhuman/script/check_projection.py``` and call the function ```render_one_subject_from_path_and_write_to_folder()``` in ```HDhuman/lib/test/test_render_api.py```.
 ```python
-#check path of example data
+#check the path of example data
 python script/check_projection.py
-#the output should be in ```example_data/check_camera```, which project vertice of the mesh to image according to the camera parameters.
+#the output should be in ```example_data/check_camera```, which projects the vertice of the mesh to the image according to the camera parameters.
 ```
