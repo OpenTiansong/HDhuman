@@ -11,7 +11,7 @@ The official release of the paper “HDhuman: High-quality Human Novel-view Rend
     * 2.2. [Taichi](#Taichi)
     * 2.3. [Other python packages](#Otherpythonpackages)
     * 2.4. [File structure](#Filestructure)
-    * 2.5. [[StableViewSynthesis](https://github.com/intel-isl/StableViewSynthesis.git)](#StableViewSynthesishttps:github.comintel-islStableViewSynthesis.git)
+    * 2.5. [StableViewSynthesis](#StableViewSynthesishttps:github.comintel-islStableViewSynthesis.git)
 * 3. [Run rendering on example data with pre-trained weights.](#Runrenderingonexampledatawithpre-trainedweights.)
     * 3.1. [Prepare data and checkpoints.](#Preparedataandcheckpoints.)
     * 3.2. [Run rendering](#Runrendering)
