@@ -130,6 +130,12 @@ cd StableViewSynthesis
 git submodule update --init --recursive
 ```
 
+Some regular packages are required.
+```shell
+#run by sudoers
+sudo apt install pkg-config libeigen3-dev
+```
+
 Build ```ext/preprocess```
 ```shell
 cd ext/preprocess
